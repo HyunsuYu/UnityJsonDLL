@@ -11,6 +11,7 @@ namespace UnityJsonDll
         {
             FileStream fileStream = new FileStream(string.Format("{0}/{1}", filePath, fileName), FileMode.Create);
             byte[] data = Encoding.UTF8.GetBytes(UnityEngine.JsonUtility.ToJson(jsonClassData));
+
             fileStream.Write(data, 0, data.Length);
             fileStream.Close();
         }
@@ -18,9 +19,11 @@ namespace UnityJsonDll
         {
             FileStream fileStream = new FileStream(string.Format("{0}/{1}.json", filePath, fileName), FileMode.Open);
             byte[] data = new byte[fileStream.Length];
+
             fileStream.Read(data, 0, data.Length);
             fileStream.Close();
             string jsonData = Encoding.UTF8.GetString(data);
+
             return JsonUtility.FromJson<T>(jsonData);
         }
     }

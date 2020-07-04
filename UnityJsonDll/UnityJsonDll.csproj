@@ -10,4 +10,8 @@
     </Reference>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;D:\dll\NodeEditorDll\AxisCubeTool_TablePathManager\bin\Debug\netcoreapp3.1\UnityJsonDll.dll&quot;" />
+  </Target>
+
 </Project>
